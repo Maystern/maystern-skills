@@ -14,9 +14,22 @@
 
 ## ✨ 能做什么
 
-| 输入 | 输出 |
-| --- | --- |
-| 简历 + 岗位 JD + 面试录音 | 带时间戳的完整逐字稿 + 有证据、可执行的面试诊断报告 |
+<table align="center">
+  <thead>
+    <tr>
+      <th align="center">📚 输入</th>
+      <th align="center"></th>
+      <th align="center">📊 输出</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">简历 · 岗位 JD · 面试录音</td>
+      <td align="center">→</td>
+      <td align="center">带时间戳的完整逐字稿<br>有证据、可执行的面试诊断报告</td>
+    </tr>
+  </tbody>
+</table>
 
 ## 🚀 Quickstart
 
