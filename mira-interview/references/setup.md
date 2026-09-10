@@ -15,7 +15,7 @@ bash .agents/skills/mira-interview/scripts/macos/configure.sh \
   --download-models
 ```
 
-脚本使用 Homebrew 安装缺少的 `ffmpeg` 和 `whisper-cpp`，将模型下载到 `interview-artifacts/models/`，并写入 `.mira-interview/config.env`。安装软件或下载模型前，先告知用户具体操作及模型配置中声明的预计体积。
+脚本使用 Homebrew 安装缺少的 `ffmpeg` 和 `whisper-cpp`，将模型下载到 `interview-artifacts/models/`，并将 `WHISPER_MODEL_NAME` 与模型路径写入 `.mira-interview/config.env`。转录脚本用该名称隔离不同模型的输出。安装软件或下载模型前，先告知用户具体操作及模型配置中声明的预计体积。
 
 用户已有模型时可直接传入路径。脚本默认在项目的 `interview-artifacts/models/` 中创建软链接，配置文件只引用该项目内路径：
 

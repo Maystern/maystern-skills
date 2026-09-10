@@ -23,7 +23,8 @@ PROJECT_ROOT/interview-artifacts/
 ├── models/
 └── <case-name>/                    # 公司名-日期-轮次，例如 acme-20260911-r1
     ├── inputs/                     # 简历、JD、原始录音的归档副本
-    ├── transcription/              # WAV、JSON、TXT、SRT、完整 Markdown 逐字稿
+    ├── transcription/
+    │   └── <model-name>/           # 该模型生成的 WAV、JSON、TXT、SRT、完整 Markdown 逐字稿
     └── reports/
         └── interview-diagnosis.md
 ```
@@ -31,6 +32,7 @@ PROJECT_ROOT/interview-artifacts/
 - `<case-name>` 使用“公司名 + 日期 + 轮次”，例如 `acme-20260911-r1`。在保留语义和可识别性的前提下尽可能精简：日期使用 `YYYYMMDD`，轮次优先使用 `r1`、`r2`、`hr`、`final` 等短写；不包含岗位、随机 ID 或无意义序号。无法从材料中确认公司、日期或轮次时，向用户询问。
 - 在分析和转录前，必须先创建 case，并将本次使用的简历、JD、原始录音分别复制到 `inputs/`。归档保留原扩展名，不修改源文件。
 - 不覆盖源文件或已有产物。发生重名时，使用明确的版本后缀。
+- 每次转录写入 `transcription/<model-name>/`，其中 `<model-name>` 取自当前配置的 `WHISPER_MODEL_NAME`。切换模型配置时创建新的模型目录，保留其他模型生成的全部转录产物；同一模型目录已有产物时仍拒绝覆盖。
 - 新下载的模型放入 `interview-artifacts/models/`。已有模型在该目录创建软链接。配置文件始终引用项目内路径。
 
 ## 工作流
@@ -56,6 +58,6 @@ PROJECT_ROOT/interview-artifacts/
 
 ## 完成标准
 
-1. 生成完整逐字稿：`interview-artifacts/<case-name>/transcription/interview-transcript.md`。
+1. 生成完整逐字稿：`interview-artifacts/<case-name>/transcription/<model-name>/interview-transcript.md`。
 2. 生成面试诊断报告：`interview-artifacts/<case-name>/reports/interview-diagnosis.md`。
 3. 在回复中返回上述两个文件的项目内可点击链接。

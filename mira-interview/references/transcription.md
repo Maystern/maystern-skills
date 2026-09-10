@@ -11,13 +11,15 @@ bash .agents/skills/mira-interview/scripts/macos/transcribe.sh \
   --case-name "<case-name>"
 ```
 
-以下产物写入同一 `transcription/` 目录：
+脚本从 `.mira-interview/config.env` 读取 `WHISPER_MODEL_NAME`，以下产物写入同一模型专属目录 `transcription/<model-name>/`：
 
 - `interview-16k-mono.wav`
 - `interview.txt`
 - `interview.srt`
 - `interview.json`
 - `interview-transcript.md`
+
+切换模型配置后，脚本使用新的 `<model-name>` 目录，不得删除或覆盖其他模型的转录结果。同一模型的目标目录已有任一产物时，脚本拒绝覆盖；如需重跑，应先由用户明确决定保留方式或使用新的模型名称。
 
 `interview-transcript.md` 是强制产物，必须完整保留 SRT 中所有有文本的片段、原有顺序和时间范围，不得省略、概括或截断长回答。
 
