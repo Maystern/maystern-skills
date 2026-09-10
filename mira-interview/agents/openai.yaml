@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mira Interview"
+  short_description: "基于简历、录音和 JD 生成完整的单场面试诊断"
+  default_prompt: "请使用 $mira-interview 分析本次面试，并生成完整逐字稿和单次面试诊断文档。"
